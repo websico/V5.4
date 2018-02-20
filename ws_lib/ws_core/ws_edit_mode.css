@@ -1,0 +1,948 @@
+/*
+ *  This file is part of Websico: online Web Site Composer, http://websico.net
+ *  Copyright (c) 2009-2017 Websico SAS, http://websico.com
+ *  Author: O.Seston
+ *
+ *  This is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  It is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this file. If not, see <http://www.gnu.org/licenses/>.
+ *  
+ *  --------------------------------------------------------------------------
+ *  MAINTENANCE CLASSES CSS
+ *  ---------------------------------------
+ */
+
+/*	Very first page container
+ *	-------------------------*/
+#pageContainer {
+	height: 100%;
+	padding: 5px;
+}
+
+/*  Elements in maintenance mode
+ *  ----------------------------*/
+.ws_editable_container, .ws_editable_component {
+	cursor: move;
+}
+.wsspage {
+	cursor: pointer;
+}
+#ws_block_corner {
+	background: #555;
+}
+.wsrawtext {
+    min-height: 20px;   /* This is to keep it visible even if it doesn't display anything */
+    min-width: 20px;    /* This is to keep it visible even if it doesn't display anything */
+}
+/* Should be included as last rule of the page for IE to work even if component has some
+ * common properties defined in user style sheet !!
+ * Unused at the moment */
+.wscontainer .ws_editable_component.ws_highlight {
+}
+.wscontainer.ws_show_element {
+    outline: 2px solid red;
+}
+
+/*	Z indexes
+ *	---------*/
+#ws_pageToolbar, #ws_elementsBar {z-index: 9}
+#ws_he1, #ws_he2, #ws_he3, #ws_he4, #ws_se1, #ws_se2, #ws_se3, #ws_se4 {z-index: 10}
+#ws_near_target, #ws_close_target {z-index: 11}
+#ws_mouse_cache, #ws_docDOMObject {z-index: 12}
+.ws_maintenance_popup, .ws_more_panel {z-index: 13}
+#ws_colormap, #ws_movingLabel, #ws_pseudoCursor {z-index: 14}
+
+/*  To hide videos when a popup is active
+ *  Actually it is player dependent, but how to detect ?
+ *  ----------------------------------------------------*/
+.WIN .hideEmbedded object, .WIN .hideEmbedded embed, .WIN .hideEmbedded iframe {
+    visibility: hidden;         /* Necessary only for Windows */
+}
+.WIN.OPERA .hideEmbedded object, .WIN.OPERA .hideEmbedded embed, .WIN.OPERA .hideEmbedded iframe,
+.WIN.GECKO .hideEmbedded object, .WIN.GECKO .hideEmbedded embed, .WIN.GECKO .hideEmbedded iframe {
+    visibility: inherit;        /* Not necessary for Opera and FF */
+}
+
+/*  Cursors and cache
+ *  -----------------*/
+.hResize, .hResize a {
+    cursor: ew-resize;
+}
+.OPERA.WIN .hResize, .OPERA.WIN .hResize a, .IE.WIN .hResize, .IE.WIN .hResize a {
+    cursor: e-resize;
+}
+.vResize, .vResize a {
+    cursor: ns-resize;
+}
+.OPERA.WIN .vResize, .OPERA.WIN .vResize a, .IE.WIN .vResize, .IE.WIN .vResize a {
+    cursor: n-resize;
+}
+#ws_mouse_cache {
+    position: fixed;
+    /* Transparent to avoid a flash at first display */    
+    background: transparent url("ws_images/loading.gif") no-repeat 50% 50%;
+    opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+#ws_mouse_cache.copyElement {
+    cursor: url("ws_lib/ws_core/ws_images/ws_copy_element.cur"), default;
+}
+#ws_mouse_cache.dragElement {
+    cursor: url("ws_lib/ws_core/ws_images/ws_drag_element.cur"), default;
+}
+#ws_mouse_cache.dontDrop {
+    cursor: url("ws_lib/ws_core/ws_images/ws_dont_drop.cur"), default;
+}
+#ws_mouse_cache.hResize {
+    z-index: 256;
+}
+#ws_mouse_cache.inSlider {
+    z-index: 256;
+}
+#ws_mouse_cache.popupOnTop {
+    background: black;
+    opacity: 0.5;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+}
+#ws_mouse_cache.waitLocal {
+    z-index: 256;
+    background-color: black;
+    opacity: 0.5;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+}
+#ws_mouse_cache.waitForPage {
+    z-index: 256;
+    background-color: white;
+    opacity: 0.5;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+}
+
+/*  Highlight div's
+ *  ---------------*/
+.ws_he, .ws_se {
+    position: absolute;
+    visibility: hidden;
+}
+.ws_he {
+    background: #2FbF8B;
+/*    background: #5F9FCB;*/
+    opacity: 0.9;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+}
+.ws_se {
+    background: #fa0;
+}
+.ws_he div, .ws_se div {
+    color: white;
+    padding: 0 0.5em;
+    font-weight: bold;
+}
+.ws_cellResizeParent {
+	outline: solid 2px #c33;
+}
+.ws_highlightElement {
+}
+#ws_container_limit {	/* drop targets in moving operation */
+	position: absolute;
+	visibility: hidden;
+	background: #466;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+	-moz-opacity:0.6;
+	opacity: 0.6;
+}
+
+/*  Targets for drag/drop, cell limits
+ *  ----------------------------------*/
+#ws_near_target {
+    position: absolute;
+	visibility: hidden;
+	background: red;
+}
+#ws_close_target {
+    position: absolute;
+	visibility: hidden;
+	background: #007EBD;
+}
+
+/*  Outline grid, blocks and models
+ *  -------------------------------*/
+.ws_showGrid .wssystemcontainer td,
+.ws_showGrid .wssystemcontainer.V>div>div,
+.ws_showGrid .wssystemcontainer.H>div {
+	outline: 1px dashed gray;
+}
+.ws_showBlocks .wscontainer.ws_editable_container {
+	outline: 2px solid blue;
+}
+.ws_showComponents .wscomponent {
+	outline: 2px solid gray;
+}
+.ws_showModels .wscontainer.ws_model_container {
+	outline: 2px solid red;
+}
+
+/*  Maintenance popup windows
+ *	-------------------------*/
+.ws_maintenance_popup {
+  	position: absolute;
+	top: 0;
+	left: 0;
+	visibility: hidden;		/* Better than display: none for computing dimensions */
+  	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	white-space: nowrap;
+	background: #fff url("ws_images/bg_popup_bottom.png") bottom left no-repeat;
+	border: solid 1px #ccc;
+	border-radius: 2px;
+	color: #444;
+	margin: 0;
+	cursor: move;
+	box-shadow: 0 5px 50px -15px #555;
+    opacity: 0;
+    /* Transition also for visibility, kept in js code for IE8- compatibility */
+	transition: clip 0.3s, visibility 0.3s, opacity 0.35s;
+    -webkit-transition: clip 0.3s, visibility 0.3s, opacity 0.35s;
+	-moz-transition: clip 0.3s, visibility 0.3s, opacity 0.35s;
+	-o-transition: clip 0.3s, visibility 0.3s, opacity 0.35s;
+}
+.ws_popup_layer1 {
+    background: url("ws_images/bg_popup_top.png") top left repeat-x;
+}
+.ws_popup_layer2 {
+    padding: 10px;
+}
+.ws_maintenance_popup * {
+	color: #444;
+	font-size: 100%;
+}
+.ws_maintenance_popup a:hover {
+	color: #478cee;
+}
+.ws_maintenance_popup table {
+	border-collapse: collapse;
+}
+.ws_maintenance_popup td {
+	outline: none;					/* To hide grid when it is enabled */
+	border: none;
+}
+.ws_maintenance_popup img {
+	border: none;
+}
+.ws_maintenance_popup textarea {
+	font-family: verdana, arial, sans-serif;
+	border: 1px solid #e1e1e1;
+}
+.ws_maintenance_popup input {
+	margin-top: 1px;
+	padding: 1px 3px;
+	border: 1px solid #e1e1e1;
+}
+.ws_maintenance_popup input:hover, .ws_maintenance_popup textarea:hover {
+    border-color: red;
+}
+.ws_maintenance_popup .checkbox, .ws_maintenance_popup label {
+	margin: 1px;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.ws_maintenance_popup .checkbox {
+	vertical-align: text-bottom;
+}
+.ws_maintenance_popup .popupVList a {
+  	display: block;
+	padding: 0 0.5em;
+	text-decoration: none;
+	font-style: normal;
+}
+#ws_styles a {
+	padding: 0.2em 1em;
+}
+.ws_maintenance_popup .popupVList a:hover {
+	color: white;
+  	background-color: #E41819;
+}
+.ws_maintenance_popup .selected {
+	color: white;
+  	background-color: #777;
+}
+.ws_status_256, .ws_status_512, .ws_status_768 {
+    cursor: default;
+    padding-right: 25px;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.ws_status_256 {
+    background-image: url("ws_images/ws_status_256.png");
+}
+.ws_status_512 {
+    background-image: url("ws_images/ws_status_512.png");
+}
+.ws_status_768 {
+    background-image: url("ws_images/ws_status_768.png");
+}
+#ws_sitemap_form .ws_folder {
+    padding-right: 2em; /* To let room for folder button */
+}
+.ws_folder_button {
+    float: right;
+    width: 1em;
+    font-weight: bold;
+}
+#ws_fieldParamsBody {
+    margin: 1em;
+}
+#ws_fieldParamsBody>div {
+    display: table-row;
+}
+#ws_fieldParamsBody>div>div {
+    display: table-cell;
+    vertical-align: top;
+}
+
+/*  Confirmation popups
+ *  -------------------*/
+#ws_confirm_popup, #ws_save_style_form, #ws_save_model_form {
+    white-space: normal;
+    width: 30em;
+}
+#ws_publish_group {
+    margin: 1em 0 1em 2em;
+    font-weight: bold;
+}
+
+/*  Doc object
+ *  ----------*/
+#ws_docDOMObject {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-left: solid 2px #444;
+	box-shadow: 0 5px 30px -3px #555;
+	transition: width 0.8s cubic-bezier(0.1,1,0.5,1);
+	-moz-transition: width 0.8s cubic-bezier(0.1,1,0.5,1);
+	-webkit-transition: width 0.8s cubic-bezier(0.1,1,0.5,1);
+	-o-transition: width 0.8s cubic-bezier(0.1,1,0.5,1);
+    width: 0;
+}
+#ws_docControl {
+    position: fixed;
+    background: #444;
+    width: 100%;
+	transition: opacity 0.5s, visibility 0.5s;
+	-moz-transition: opacity 0.5s, visibility 0.5s;
+	-webkit-transition: opacity 0.5s, visibility 0.5s;
+	-o-transition: opacity 0.5s, visibility 0.5s;
+}
+#ws_docControl.visible {
+    visibility: visible;
+    opacity: 0.8;
+}
+#ws_docControl.hidden {
+    visibility: hidden;     /* To allow click on some link under */
+    opacity: 0;
+}
+#ws_docControl a {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: white;
+    border-style: solid;
+    border-width: 0 4px;
+    text-decoration: none;
+    padding: 0 0.2em;
+    margin: 0.5em;
+}
+#ws_docControl a:visited {
+    color: white;
+}
+#ws_docDOMObject.open {
+    width: 500px;
+}
+#ws_docDOMObject.closed {
+    width: 0;
+}
+#ws_docIframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+/*  Style and model management popup
+ *  --------------------------------*/
+.smManagement {
+    border-collapse: collapse;
+    width: 100%;
+}
+.smManagement th {
+    font-style: italic;
+    text-align: center;
+    padding: 0.5em;
+    text-align: left;
+}
+.smManagement td {
+    padding: 0.25em;
+}
+.smManagement a {
+    margin-right: 1em;
+}
+.smManagement .even {
+    background-color: #eee;
+}
+.smManagement .check {
+    text-align: center;
+}
+#ws_sm_management_body {
+    border: solid 1px #ddd;
+    width: 60em;
+    height:30em;
+    overflow: auto;
+}
+
+/*	Model import
+ *	------------*/
+#ws_import_model {
+	width: 80%;
+	height: 80%;
+	max-width: 1024px;
+}
+#ws_import_model_body {
+	width: 100%;
+	border: solid 1px #e1e1e1;
+}
+
+/*  Buttons
+ *  -------*/
+.ws_maintenance_popup .ws_styleButtons {
+	clear: both;
+  	padding: 0.5em;
+  	margin-top: 0.5em;
+	border: solid 1px #e1e1e1;
+	white-space: nowrap;
+	overflow: hidden;  /* Because of floating elements */
+}
+.ws_styleButtons .ws_Select {
+	width: 7em;
+	margin: 0 0.5em;
+}
+.ws_unlinkDatafile {
+	display: block;
+	background: url("ws_images/ws_default_off.gif") 0 50% no-repeat;
+	padding-left: 15px;
+	text-decoration: none;
+}
+.ws_unlinkDatafile:hover {
+	text-decoration: underline;
+}
+.ws_deleteContactField {
+	padding-left: 10px;
+}
+.ws_maintenance_popup button {
+	background: white;
+  	margin: 1px;
+  	padding: 2px 0.5em 2px 0.5em;
+	border: solid 1px #e1e1e1;
+	border-radius: 2px;
+}
+.ws_maintenance_popup button:hover {
+	background: #478cee;
+	color: #fff;
+	border-color: #478cee;
+	cursor: default;   /* For some browsers (Opera) */
+}
+.ws_submit_pack {
+	margin-top: 0.5em;
+	text-align: right;
+}
+.ws_submit_pack .button {
+	background: #444;
+	color: #fff;
+	font-weight: bold;
+  	padding: 0.3em;
+	border: solid 1px #444;
+	border-radius: 2px;
+}
+.OPERA .ws_submit_pack .button {
+    padding-bottom: 1px;
+}
+.IE9 .ws_submit_pack .button {
+  	padding-top: 2px;
+}
+
+/*	Menu bar and more controls panel in maintenance popups
+ *	------------------------------------------------------*/
+.ws_menubar {
+	color: #fff;
+	background-color: #222;
+	margin: 0;
+	text-align: right;
+}
+.ws_menubar .ws_title {
+	color: #fff;
+	font-size: 18px;
+    line-height: 1.8em;
+	font-weight: bold;
+	padding-right: 0.5em;
+}
+.ws_more_panel {
+    position: absolute;
+    width: 100%;
+	background-color: #555;
+    opacity: 0.9;
+    transition: max-height 0.4s cubic-bezier(0,1,0,1);
+    -webkit-transition: max-height 0.4s cubic-bezier(0,1,0,1);
+    -o-transition: max-height 0.4s cubic-bezier(0,1,0,1);
+    -moz-transition: max-height 0.4s cubic-bezier(0,1,0,1);
+    max-height: 0;
+    overflow: hidden;
+}
+.ws_more_panel * {
+	color: #fff;
+}
+.ws_more_panel input {
+	color: #444;
+}
+.ws_more_panel.visible {
+    transition: max-height 0.4s cubic-bezier(0.6,0,1,1);
+    -webkit-transition: max-height 0.4s cubic-bezier(0.6,0,1,1);
+    -o-transition: max-height 0.4s cubic-bezier(0.6,0,1,1);
+    -moz-transition: max-height 0.4s cubic-bezier(0.6,0,1,1);
+    max-height: 500px; /* Hope it's enough, but how to know the right value, even dynamically ?? */
+}
+.ws_more_panel .content {
+    text-align: left;
+	padding: 0.5em;
+}
+.ws_more_panel td {
+	padding-top: 0.5em;
+	vertical-align: top;
+}
+.ws_maintenance_popup .ws_subtitle {
+	background: #e1e1e1;
+    text-align: right;
+	font-size: 14px;
+	font-weight: bold;
+	font-style: italic;
+	padding-top: 2px;
+}
+.ws_menubar button {
+	background: transparent;
+  	float: left;
+  	margin: 0;
+  	padding: 0;
+  	border: none;
+	outline: none;			/* To disable Chrome focus outline */
+	width: 2.6em;
+}
+.ws_menubar button svg {
+	width: 1.5em;
+	height: 1.5em;
+	margin: 0.5em;	
+}
+.ws_menubar button:hover, .ws_menubar button.on {
+	background: #478cee;
+	cursor: default;       /* Opera */
+}
+
+/*  Page toolbar
+ *  ------------*/
+#ws_pageToolbar {
+	font-size: 13px;
+    text-align: left;
+	overflow: hidden;      /* To get right height */
+	width: 100%;
+	transition: height 0.3s, opacity 0.3s;
+}
+
+#ws_pageToolbar .ws_right_buttons button{
+	float: right;
+}
+#ws_pageToolbar input {
+    border-width: 0;    /* Chrome */
+    margin: 0;          /* Chrome */
+    font-family: inherit;
+    font-size: inherit;
+    border: solid 1px transparent;
+	padding: 0.1em 0.3em;
+	margin-left: 0.3em;
+}
+#ws_pageToolbar input:hover {
+	border-color: red;
+}
+#ws_pageToolbar .ws_textInput {
+    float: left;
+    padding: 0.6em 0 0 0.5em;
+}
+.WEBKIT #ws_pageToolbar .ws_textInput {
+    padding: 0.5em 0 0 0.5em;
+}
+#ws_pageToolbar .ws_Select {
+    float: left;
+    width: 2em;
+    border: solid 1px #444;
+    margin: 0.5em;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.WEBKIT #ws_pageToolbar .ws_Select {
+    margin: 0.45em;
+}
+#ws_new_page_form .ws_Select {
+    width: 3em;
+    display: inline;
+}
+#ws_new_page_form .ws_Select div {
+    display: inline;
+}
+
+/*  Add element toolbar
+ *  -------------------*/
+#ws_elementsBar {
+	color: #fff;
+	background-color: #222;
+	font-weight: bold;
+    white-space: nowrap;
+	cursor: default;
+	padding: 0.5em 0 0.5em 0;
+	position: fixed;
+	overflow: hidden;
+	height: 100%;
+	transition: width 0.3s ease-out 0.3s, padding 0.3s ease-out 0.3s, opacity 0.3s;
+	width: 3em;
+}
+#ws_elementsBar:hover {
+	padding-left: 0;
+}
+.ws_hideMenu #ws_elementsBar {
+	padding: 0;
+	width: 0;
+	opacity: 0;
+}
+#pageContainer {
+	transition: margin 0.3s;
+	margin-left: 3em;
+}
+.ws_hideMenu #pageContainer {
+	margin-left: 0;
+}
+.ws_element_to_add, #ws_model_list div {
+	padding: 0.6em;
+}
+.ws_element_to_add svg {
+	width: 1.5em;
+	height: 1.5em;
+	padding-right: 1em;
+}
+.ws_element_to_add:hover, #ws_model_list div:hover {
+	background-color: #e60;
+}
+#ws_add_model_selector:hover {
+	background-color: transparent;
+}
+#ws_add_model_selector {
+	padding-right: 0;
+}
+#ws_model_list {
+    margin-left: 2em;
+}
+
+/*	Page settings
+ *	-------------------*/
+#wsspage_form .item {
+	padding-top: 0.75em;
+	clear: left;
+}
+
+/*	Multi-purpose floating label (drag-drop)
+ *	---------------------------------------*/
+#ws_movingLabel {
+	white-space: nowrap;
+	background: #ffffe1;
+	color: #444;
+	border: dotted 1px #555;
+	padding: 0.1em 0.3em;
+    position: absolute;
+    display: none;
+}
+#ws_movingLabel.windowResize {
+    font-size: 3em;
+    position: fixed;
+    left: 100px;
+    top: 100px;
+    display: block;
+    opacity: 0.8;
+}
+#ws_movingLabel.display {
+    display: block;
+}
+
+/*	Style popup (containing tabbed pane)
+ *	-----------------------------------*/
+#ws_style_form {
+	width: 42em;
+}
+.ws_tabbedPane {
+	margin: 1em 0;
+}
+.ws_tabPanes {
+	height: 12em;
+}
+
+/*	Style controls
+ *	--------------*/
+.ws_styleTable {
+	white-space: normal;
+	width: 100%;
+	margin-top: 0.5em;
+}
+.ws_styleTable td {
+	vertical-align: top;
+}
+.ws_styleTable table td {
+	vertical-align: middle;
+}
+.ws_styleControlCell {
+	margin: 2px 2px 4px 2px;
+	border: solid 1px #eee;
+	overflow: hidden;	/* To adjust height with floating contents */
+}
+.ws_styleControlCell .title {
+	background: #555;
+	color: #fff;
+	padding: 1px 5px;
+	margin-bottom: 0.4em;
+	white-space: nowrap;
+}
+.ws_styleControlCell .body {
+	padding: 0.1em 0.5em;
+	overflow: hidden;	/* To adjust height with floating contents */
+}
+.ws_maintenance_popup .ws_kInput {
+	text-align: center;
+}
+.ws_smallSlider .ws_slider {
+  	width: 4.5em;
+}
+.ws_quadStyleInput .ws_input {
+	margin: 1px;
+}
+.ws_quadStyleInput .ws_slider {
+  	width: 4.5em;
+}
+.ws_quadStyleInput .ws_kInput {
+	text-align: right;
+  	width: 2em;
+}
+#borderStyle {
+    width: 8em;
+}
+/*	Color control
+ *	-------------*/
+.ws_redCntrl .ws_slider {
+	background: url("ws_images/ws_red_Vgauge.gif") no-repeat;
+	width: 0.7em;
+	height: 5em;
+}
+.ws_greenCntrl .ws_slider {
+	background: url("ws_images/ws_green_Vgauge.gif") no-repeat;
+	width: 0.7em;
+	height: 5em;
+}
+.ws_blueCntrl .ws_slider {
+	background: url("ws_images/ws_blue_Vgauge.gif") no-repeat;
+	width: 0.7em;
+	height: 5em;
+}
+.ws_lightCntrl {
+}
+.ws_lightCntrl .ws_hSlider{
+	width: 6em;
+	margin-left: 5px;
+}
+.ws_colorPickerImg img {
+  	cursor: pointer;
+  	width: 4em;
+  	height: 3em;
+  	border-top: 1px solid #888;
+  	border-right: 1px solid white;
+  	border-bottom: 1px solid white;
+  	border-left: 1px solid #888;
+  	float: left;
+}
+#ws_colormap {
+	cursor: crosshair;
+	padding: 2px;
+	width: 184px;
+    opacity: 1;
+    -webkit-transition: visibility 0;
+	-moz-transition: visibility 0;
+	-o-transition: visibility 0;
+	-transition: visibility 0;
+}
+#ws_colormap img {
+	float: left;
+	width: 180px;
+	border: solid 1px #b95;
+	margin: 1px;
+}
+.ws_colorBlock {
+	float: left;
+	width: 42px;
+	height: 12px;
+	border: solid 1px #b95;
+	margin: 1px;
+  	border-top: 1px solid white;
+  	border-right: 1px solid #888;
+  	border-bottom: 1px solid #888;
+  	border-left: 1px solid white;
+}
+
+/*	Shadow controls
+ *	--------------*/
+.ws_shadow input {
+	width: 80%;
+}
+.ws_shadow .ws_colorPickerImg img {
+	clear: left;
+  	width: 8em;
+  	height: 1em;
+  	float: none;
+}
+
+/* CSS pane
+ * --------*/
+#ws_cssTextArea {
+    width: 27em;
+    float: left;
+    margin-right: 0.5em;
+}
+
+/*  Panned doc
+ *  ----------*/
+#ws_pagePane {
+    float: left;
+    width: 70%;
+    height: 95%;
+    overflow: scroll;
+}
+#ws_infoPane {
+    float: left;
+    width: 30%;
+    height: 95%;
+    border: none;
+}
+
+/*
+ *  jsScrollbar for elements bar
+ *  We keep only vertical scrollbar, all horizontal properties
+ *  have been from original (cf jsScrollbar distrib)  
+ *  ----------------------------------------------------------
+/**
+ * Always use a CSS compressor, because the CSS for complex scrollbars can be
+ * quite verbose.
+ * 
+ * HTML structure utilized in this scrollbar:
+ * <div class="jssb-y">
+ *     <div class="jssb-up"></div>
+ *     <div class="jssb-y-track">
+ *         <div class="jssb-y-thumb">
+ *         </div>
+ *     </div>
+ *     <div class="jssb-down"></div>
+ * </div>
+ */
+
+/* Enable jsScrollbars in capable browsers */
+.jssb-applied > .jssb-content { 
+	overflow: hidden;
+	
+	/* We'll use positioning to size the content, so reset height to auto */
+	height: auto;
+	
+	position: absolute;
+	top: 0.5em;
+	bottom: 0;
+	left: 0;
+}
+
+
+/* Hide scrollbars by default */
+/* You could also set up a disabled state here, but that would just add even more CSS */
+.jssb-y {
+	opacity: 0;
+}
+
+/* Show scrollbars when needed */
+.jssb-scrolly .jssb-y {
+ 	opacity: 0.6;
+}
+
+/* CSS3 Rounded corners and css transitions */
+.jssb-y, .jssb-y-thumb, .jssb-y-track {
+	border-radius: 3px;
+	transition: opacity 1s ease-out;
+}
+	
+/**
+ * VERTICAL SCROLLBAR
+ */
+
+/* Set vertical scrollbar position and size in the container */
+.jssb-y {
+	position: absolute;
+
+	/* 5 pixels from the top right and bottom sides */
+	top: 5px;
+	right: 5px;
+	bottom: 5px;
+	width: 5px;
+}
+
+	/* Set default positioning and sprite image for scrollbar components */
+	.jssb-y-up, .jssb-y-down, .jssb-y-thumb, .jssb-y-track {
+		background: #EEE;
+		position: absolute;
+
+		/* Fill up all available width in the scrollbar. In this case, it will be 15px */
+		/* You could also set this with a width attribute */
+		left: 0;
+		right: 0;
+	}
+
+	/* Set position of the vertical scrollbar track */
+	.jssb-y-track {
+		top: 0;
+		bottom: 0;
+		background: #999;
+	}
+
+	/* Set the minimum/default vertical thumb size */
+	.jssb-y-thumb {
+		/* The thumb won't shrink smaller than this */
+		height: 30px;
+	}
+	
+/* Hover background-color */
+.jssb-y-thumb:hover {
+	background-color: #FFF;
+}
+
+/* Clicked background-color */
+/* You have to include click:hover also, other wise you'll get the plain hover state */
+.jssb-y-up-click, .jssb-y-down-click, .jssb-y-thumb-click,
+.jssb-y-up-click:hover, .jssb-y-down-click:hover, .jssb-y-thumb-click:hover {
+	background-color: #FFF;
+}
+
+/* Clicked background-color for the track */
+.jssb-y-track-click {
+	background-color: #BBB;
+}

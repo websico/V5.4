@@ -1,0 +1,281 @@
+/*
+ *  This file is part of Websico: online Web Site Composer, http://websico.net
+ *  Copyright (c) 2009-2015 Websico SAS, http://websico.com
+ *	Author: O.Seston
+ *
+ *  This is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  It is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this file. If not, see <http://www.gnu.org/licenses/>.
+ *  
+ *	-------------------------------------------------------------------------------
+ *	STYLE SHEET FOR JAVASCRIPT CONTROLS
+ *	All images are supposed to be in subdirectory "ws_images"
+ *	-------------------------------------------------------------------------------
+ */
+/*	Numeric controls (slider, wheel, ..)
+ *	-----------------------------------*/
+.ws_Input {
+	margin: 0.2em;
+}
+.ws_slider {
+	float: left;
+	border: solid 1px #e1e1e1;
+	margin: 0.3em 0.3em 0.25em 0;
+	cursor: default;
+}
+.ws_slider:hover, .ws_slider.active {
+	border-color: red;
+}
+.ws_kInput {
+	margin: 0;
+	padding: 0;
+}
+.ws_hSlider {
+	background: url("ws_images/ws_sliderh.gif") repeat-x center center;
+  	width: 7.5em;
+	height: 1em;
+}
+.ws_hSlider .layer1 {
+	background: url("ws_images/ws_sliderh_shade.png") center center;
+  	width: 100%;
+	height: 100%;
+}
+.ws_vSlider {
+	background: url("ws_images/ws_sliderv.gif") repeat-y center center;
+  	width: 1em;
+	height: 6em;
+}
+.ws_vSlider .layer1 {
+	background: url("ws_images/ws_sliderv_shade.png") center center;
+  	width: 100%;
+	height: 100%;
+}
+.ws_2dimSlider {
+	background: url("ws_images/ws_slider2dim.png") repeat center center;
+  	width: 3em;
+	height: 3em;
+}
+
+/*	Boolean/radio control
+ *	---------------------*/
+.ws_Button {
+	background: url("ws_images/ws_popup_button_light.jpg") center left repeat-x;
+	cursor: default;
+	padding: 1px 6px;
+  	border: 1px solid #ddd;
+  	border-radius: 2px;
+}
+.ws_Button.disabled {
+	opacity: 0.5;
+  	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+}
+.ws_Button.true {
+	background: url("ws_images/ws_popup_button_true.jpg") no-repeat;
+	border-color: #478cee;
+}
+.ws_Button.false {
+	background: url("ws_images/ws_popup_button_light.jpg") center left repeat-x;
+}
+.ws_Button:hover {
+	border-color: red;
+}
+.ws_Button.disabled:hover {
+	border-color: transparent;
+}
+.ws_Button.active {
+	border-color: #aaa #fff #fff #aaa;
+}
+.ws_buttonHlist {
+  	float: left;
+  	margin: 10px 1px;
+}
+.ws_buttonText.ws_buttonText {  /* A trick to get a higher specificity (0020) */
+    font-size: 95%;
+    background: top left no-repeat;
+	padding: 1px 6px 2px 20px;
+	margin: 2px;
+}
+.ws_buttonText.true {
+    background-image: url("ws_images/ws_bon.gif");
+	border-color: transparent;
+}
+.ws_buttonText.false {
+    background-image: url("ws_images/ws_boff.gif");
+	border-color: transparent;
+}
+.ws_buttonText.onBlack.true {
+    background-image: url("ws_images/ws_bon.gif");
+}
+.ws_buttonText.onBlack.false {
+    background-image: url("ws_images/ws_boff.gif");
+}
+.ws_buttonText:hover {
+    border-color: red;
+}
+.ws_buttonText.active {
+}
+.ws_buttonText.inline {
+    float: left;
+    margin: 2px 15px 3px 0;
+}
+.ws_buttonDefault.ws_buttonDefault {
+	display: inline;
+	margin-left: 0.2em;
+	padding: 0 5px;
+	border: solid 1px transparent;
+    background: center no-repeat;
+}
+.ws_buttonDefault.true {
+	background-image: url("ws_images/ws_default_on.gif");
+	border-color: transparent;
+}
+.ws_buttonDefault.false {
+	background-image: url("ws_images/ws_default_off.gif");
+}
+.ws_buttonDefault:hover {
+	border-color: #e1e1e1;
+}
+.ws_buttonDefault.true:hover {
+    background-image: url("ws_images/ws_default_on.gif");
+}
+.ws_buttonDefault.false:hover {
+	background-image: url("ws_images/ws_default_off.gif");
+}
+
+/*  Selector
+ *  --------*/
+.ws_Select, .ws_Select.disabled:hover {
+	background: white url("ws_images/ws_select.gif") center right no-repeat;
+	color: #555;
+    border: solid 1px #e1e1e1;
+    cursor: default;
+    padding: 1px 20px 1px 0.5em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.ws_Select:hover {
+	background-image: url("ws_images/ws_select_hl.gif");
+	border-color: red;
+}
+.ws_Select.disabled {
+	opacity: 0.5;
+  	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+}
+.ws_Select.ws_Select.optionsPanel {
+						/* Options panel has ws_Select className and is a sibling of ws_Select element */
+						/* Selector has 2 ws_Select to get the right priority */
+	background: #fff url("ws_images/bg_popup_bottom.png") bottom left no-repeat;
+	padding: 0.5em;
+    z-index: 1;
+    width: auto;
+	max-height: 25em;
+    overflow: auto;
+}
+.ws_Select a.option {  /* Option is a child of options panel, which is of class ws_Select */
+    display: block;
+    white-space: nowrap;
+    padding: 0 1.5em 0 2px; /* Let enough space on the right for the scrollbar to avoid horizontal scrollbar (FF, Chrome..) */
+}
+.ws_Select a.option:hover, .ws_Select a.option:hover * {
+	color: #fcfcfc;
+  	background-color: #E41819;
+}
+.ws_Select a.option.selected, .ws_Select a.option.selected * {
+	color: #fcfcfc;
+  	background-color: #555;
+}
+.ws_Select .separator {
+    font-weight: bold;
+    font-style: italic;
+    text-align: right;
+    border-bottom: solid 1px;
+}
+
+/*  File input control
+ *  ------------------*/
+.ws_FileInput {
+  	position: relative;
+  	white-space: nowrap;     /* To always keep the button "browse" on the same line */
+}
+.ws_FileInput .visibleFileInput {
+    display: inline;        /* To get the right width */
+}
+.ws_FileInput .ws_Button {
+    display: inline;
+    margin-left: 2px;
+}
+.ws_FileInput .visibleFileInput:hover .ws_Button {
+	background: #478cee;
+	color: #fff;
+	border-color: #478cee;
+}
+.ws_FileInput .realFileInput {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+  	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+.OPERA .ws_FileInput .realFileInput {
+    letter-spacing: 10em;     /* A trick to get a larger button */
+}
+
+/*  Tabbed panes
+ *	------------*/
+.ws_tabPanes {
+	height: 0;
+  	clear: both;
+  	padding: 5px;
+  	border: solid 1px #e1e1e1;
+  	border-top: none;
+}
+.ws_tabs {
+	border-bottom: solid 2px #666;
+	float: left;
+	width:100%;
+}
+.ws_tabs ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.ws_tab {
+	float: left;
+}
+.ws_tabs .ws_tab a  {
+    background: url("ws_images/ws_popup_button_light.jpg") center repeat-x;
+    color: #aaa;
+	border: solid 1px #e1e1e1;
+	border-top-right-radius: 2px;
+	border-top-left-radius: 2px;
+	font-weight: bold;
+	text-decoration: none;
+	display: block;
+	padding: 2px 8px;
+	margin-right: 2px;
+}
+.ws_tabs .ws_tab a:hover {
+	background: #478cee;
+	border-color: #478cee;
+	color: #fff;
+}
+.ws_tab_active {
+}
+.ws_tab_disabled {
+	display: none;
+}
+.ws_tabs .ws_tab.ws_tab_active a { /* to get precedence on ws_tab a:hover */
+	background: #555;
+	border-color: #555;
+	color: #fff;
+	padding-bottom: 3px;
+}

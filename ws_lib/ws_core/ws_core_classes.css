@@ -1,0 +1,154 @@
+/*
+ *  This file is part of Websico: online Web Site Composer, http://websico.net
+ *  Copyright (c) 2009-2017 Websico SAS, http://websico.com
+ *	Author: O.Seston
+ *
+ *  This is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  It is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this file. If not, see <http://www.gnu.org/licenses/>.
+ *  
+ *  --------------------------------------------------------------------------
+ *  ESSENTIAL SYSTEM CSS, TIGHTLY COUPLED WITH PHP CODE
+ *  ---------------------------------------------------
+ */
+
+/*  Basic containers
+ *  ----------------*/
+ 
+/* Old fashion, useful ? */
+td {
+	padding: 0;
+}
+.wssystemcontainer td {
+	vertical-align: top;
+}
+/**/
+
+.wssystemcontainer {
+	width: 100%;
+	border-collapse: collapse;
+	display: table;			/* Table allows width or height repartition in cells, a Websico paradigm */	
+	/* Height is recomputed at load time by jglobal.js to be 100% of its container */
+}
+
+.wssystemcontainer.V>div {
+	display: table-row;
+}
+.wssystemcontainer.V>div>div {
+	display: table-cell;
+	vertical-align: top;
+}
+.wssystemcontainer.H>div {
+	display: table-cell;
+	vertical-align: top;
+}
+
+#outerContainer, #firstContainer {
+	height: 100%;
+}
+
+/*  User link container.
+	-------------------*/
+a.wscontainer {
+	display: block;
+	cursor: pointer;
+}
+a.wscontainer * {
+	cursor: pointer;
+}
+
+/*  Dropdown user container, with vertical-aligned content.
+	-------------------------------------------------------*/
+.wscontainer>div.dropDownOpen {
+    transition: max-height 0.4s cubic-bezier(0.6,0,1,1);
+    -webkit-transition: max-height 0.4s cubic-bezier(0.6,0,1,1);
+    -o-transition: max-height 0.4s cubic-bezier(0.6,0,1,1);
+    -moz-transition: max-height 0.4s cubic-bezier(0.6,0,1,1);
+    max-height: 2000px; /* Hope it's enough, but how to know the right value, even dynamically ?? */
+    overflow: hidden;
+}
+.wscontainer>div.dropDownClosed {
+    transition: max-height 0.4s cubic-bezier(0,1,0,1);
+    -webkit-transition: max-height 0.4s cubic-bezier(0,1,0,1);
+    -o-transition: max-height 0.4s cubic-bezier(0,1,0,1);
+    -moz-transition: max-height 0.4s cubic-bezier(0,1,0,1);
+    max-height: 0;
+    overflow: hidden;
+}
+
+/*  Stretchy user container, with vertical-aligned content.
+	-------------------------------------------------------*/
+.wscontainer .stretchWrapper { /* Old fashion, IE7- */
+	border-collapse: collapse;
+	width: 100%;
+}
+.wscontainer div.stretchWrapper {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.wscontainer .top {
+	display: table-cell;
+	vertical-align: top;
+}
+.wscontainer .middle {
+	display: table-cell;
+	vertical-align: middle;
+}
+.wscontainer .bottom {
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+/*	Basic components
+ *	----------------*/
+/*.wscomponent {
+	display: -moz-inline-stack;
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+    vertical-align: top;        
+}
+.wsstitle, .wstextarea {
+    display: block;
+}*/
+.wsrawtext {
+	padding: 5px;
+}
+.ws_selection {
+	position: absolute;
+}
+.inlineBlock {
+	display: -moz-inline-stack;  /* optional */
+	display: inline-block;
+	zoom: 1;  /* triggers hasLayout for IE */
+	*display: inline;  /* target IE7 only */
+}
+
+/*  Errors
+ *  ------*/
+.ws_error, .ws_info {
+    background: #E3E3E3;
+    color: #555;
+    font-size: 1.5em;
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    border-left: 5px solid #E0001A;
+}
+.ws_info {
+    border-left: 5px solid #080;
+	color: #080;
+}

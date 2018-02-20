@@ -1,0 +1,38 @@
+
+# WEBSICO root directory directives
+# ---------------------------------
+# Lang is passed in url, as in <http://domain/[...]/it/home.html>.
+# The actual page file is <http://domain/[...]/index.php>, which decrypts the url
+# to find the right data in the right language.
+# Urls of files included or linked by the page may be relative and we must delete the
+# lang field to find them, because there is no language distinction for programm files.
+# Some day it would be useful to rethink of symbolic links for languages...
+#
+# The environment variable SiteRootPath must be set in case of Apache <2.4 and if VirtualDocumentRoot
+# directive is set up in the main config
+# SetEnvIf Request_URI .* SiteRootPath=this_directory
+
+RewriteEngine on
+
+# 0/ IMAGES CALLED BY CSS FILES THAT ARE IN CACHE DIRECTORY
+# ------------------------------------------------------------------------------------
+    RewriteRule (cache/(ws_images/.*))$ ws_lib/ws_core/$2 [L]
+
+# 1/ LIBRARIES AND DATA FILES CALLED BY HTML (cache, .js, images etc.. and some .html)
+# ------------------------------------------------------------------------------------
+    RewriteRule /((cache/.*)|(data/.*)|(ws_lib/.*)|(icon\.ico))$ %{ENV:SiteRootPath}$1 [L]
+
+# 2/ PAGES
+# ------------------------------------------------------------------------------------
+# Since we do not know valid languages at this step, all unknown files
+# are redirected to index.php, url will be analyzed by ws_preamble.php
+# xxx --> index.php (websico.net/fr is a valid url !!)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule .* %{ENV:SiteRootPath}index.php [L]
+
+# SOME PHP CONFIG VALUES
+# ----------------------
+# Following values are necessary to upload big full site data
+#   php_value upload_max_filesize 1000M
+#   php_value post_max_size 1000M
+#   php_value input_max_time 3600

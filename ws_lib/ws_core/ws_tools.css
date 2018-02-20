@@ -1,0 +1,246 @@
+/*
+ *  This file is part of Websico: online Web Site Composer, http://websico.net
+ *  Copyright (c) 2009-2015 Websico SAS, http://websico.com
+ *	Author: O.Seston
+ *
+ *  This is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  It is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this file. If not, see <http://www.gnu.org/licenses/>.
+ *  
+ *  --------------------------------------------------------------------------
+ *  CORE CLASSES CSS
+ *  ---------------------------------------
+ */
+html {
+    height: 100%;
+}
+body {
+	font-family: arial, sans-serif;
+    color: #444;
+}
+input {
+	color: #555;
+	padding: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	border-color: #ddd;
+	border-width: 2px;
+}
+input:hover {
+	border-color: #3898d0;
+}
+.defaultSubmit {
+	border: 2px solid #ddd;
+	border-radius: 2px;
+	background: inherit;
+}
+button {
+	font-weight: bold;
+	letter-spacing: 0.06em;
+	color: white;
+	background-color: #3090c8;
+	padding: 0.4em;
+	border-width: 0;
+	border-radius: 2px;
+	outline: none;
+}
+button:hover {
+	background-color: #e60;
+}
+button:active {
+	opacity: 0.7;
+}
+button:disabled {
+	background-color: grey;
+}
+html.tools {
+    height: auto;
+}
+body.tools {
+	padding-bottom: 120px;
+    background: 90% 100% url(ws_images/logo_350.png) no-repeat;
+}
+body.login {
+	font-family: sans-serif;
+    display: table;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    margin-top: -2em;
+}
+div.login {
+    text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+div.login h1 {
+	font-size: 1.5em;
+}
+div.login img {
+	margin-bottom: 20px;
+}
+#ws_cache {
+	display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white url("ws_images/loading.gif") no-repeat 50% 50%;
+    opacity: 0.5;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+}
+#title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+    margin-left: 1em;
+}
+#tools_title {
+    font-size: 2em;
+    margin-right: 1em;
+    float: left;
+}
+#infoButton {
+	float: left;
+}
+#infoButton img {
+	border: none;
+}
+#siteName {
+    font-style: italic;
+}
+
+#toolbar {
+	background: #555;
+	color: white;
+	border-radius: 2px;
+	padding: 0.4em 0.5em 0 0.5em;
+}
+#exit_from_tools {
+	float: right;
+	background-image: url('ws_images/exit_from_tools.gif');
+	background-repeat: no-repeat;
+	background-position: 98% 50%;
+	text-transform: uppercase;
+	padding: 0.5em 30px 0.5em 0.5em;
+	margin-top: 0.2em;
+}
+.group {
+	margin-left: 10%;
+	margin-right: 10%;
+}
+.group h2 {
+	border-top: solid 1px #ddd;
+    margin: 0;
+    padding: 6px 0 3px 40px;
+	background: no-repeat 0 3px;
+	cursor: pointer;
+}
+.group h2:hover {
+	background-color: #f8f6f8;
+}
+.group h3 {
+    color: red;
+}
+h2.docAdmin {	/* For admin documentation :( */
+	border-top: solid 1px #ddd;
+    margin: 0;
+    padding: 3px 0 3px 40px;
+	background: no-repeat 0 3px;
+}
+#contact_title {
+	background-image: url('ws_images/ws_contact.png');
+}
+#subscription_title {
+	background-image: url('ws_images/ws_subscription.png');
+}
+#preferences_title {
+	background-image: url('ws_images/ws_preferences.png');
+}
+#update_software_title {
+	background-image: url('ws_images/ws_update_software.png');
+}
+#hostnames_title {
+	background-image: url('ws_images/ws_hostnames.png');
+}
+#backups_title {
+	background-image: url('ws_images/ws_backups.png');
+}
+.group .body {
+	margin-left: 20%;
+	overflow: hidden;
+	max-height: 0;
+    transition: max-height 0.5s ease-in-out, margin 0.3s ease-in;
+    -moz-transition: max-height 0.5s ease-in-out, margin 0.3s ease-in;
+    -webkit-transition: max-height 0.5s ease-in-out, margin 0.3s ease-in;
+    -o-transition: max-height 0.5s ease-in-out, margin 0.3s ease-in;
+}
+.group .body.focus {
+	max-height: 40em;
+	margin-bottom: 1em;
+	margin-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+.group a {
+}
+.paramItem {
+    margin-bottom: 5px;
+}
+.subParagraph {
+	margin: 1em;
+}
+.subParagraph .title {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-bottom: 0.3em;
+}
+.subParagraph .paramItem {
+}
+
+.login {
+    margin-top: 3em;
+}
+.adminButton {
+    font-size: 60%;
+}
+a.langChoice {
+	text-decoration: none;
+}
+a.langChoice img {
+	float: right;
+	width: 20px;
+	height: 10px;
+	border: solid 1px #ccc;
+	margin: 10px 2px;
+}
+a.langChoice:hover img {
+	border-color: black;
+}
+.siteList td {
+    vertical-align: top;
+}
+.siteList .used {
+    padding-left: 2em;
+    font-family: monospace;
+    text-align: right;
+    white-space: nowrap;
+}
+.uptodate {
+    color: green;
+}
+.warning {
+    color: red;
+    border: solid 2px red;
+    padding: 0.5em;
+}

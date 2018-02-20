@@ -1,0 +1,76 @@
+1/ WHAT IS WEBSICO
+------------------
+WEBSICO is an online website builder, fully WYSIWYG, drag'n drop, allowing to
+create and publish easily responsive web sites. Once installed on an internet server,
+it is fully driven through a standard web browser.
+http://websico.com
+
+2/ LICENSE
+----------
+Beside some third-party files under their own public license, the software is
+copyright (c) WEBSICO SAS, Bordeaux France.
+The copyleft version in this directory and it's subdirectories is delivered under
+GNU Affero Public License, to be installed on private servers, and/or adapted for
+particular needs, or to make derivative works.
+You'll find a copy of GNU AGPL in the file license.txt. 
+
+3/ HOSTING SYSTEM REQUIREMENTS
+------------------------------
+- Linux system (centos6/7 tested), Windows 7 (used for development with WAMP)
+- Apache 2
+- PHP 5, 7 (5.3 -> 5.5, 7.0 tested)
+- MySQL 5 (MySQL 5.1 -> 5.6 and Mariadb 5.4 tested)
+- a mail server (postfix tested) or an SMTP relay account
+- zip and unzip utilities
+
+FILESYSTEM considerations:
+The websico site root directory must be writable by the apache user (apache:apache).
+
+APACHE considerations:
+Mod_rewrite must be available and the websico site root directory must be AllowOverride All,
+this is to allow the .htaccess file to work properly, otherwise some weird
+behaviour can be noticed.
+
+PHP considerations:
+Some ini directives should be setup, those which default values
+are not always suitable (see notes below).
+RSS reader needs xml libraries, you might have to install php-xml package, otherwise reading
+some feeds will crash.
+
+MySQL considerations:
+If user and/or database is not yet created it must only exist a user with all privileges,
+all necessary stuff will be created on the fly.
+
+4/ INSTALLATION
+---------------
+- download websico.tgz
+- untar websico.tgz to your_site_root_directory (tar xzf websico.tgz)
+- edit carefully ws_config.php to setup your parameters
+- browse your url and enjoy !
+
+5/ RE-INSTALLATION, NEW VERSION
+-------------------------------
+To make a full clean reinstallation keeping your data and parameters
+- download a backup with the help of the admin page of your site
+- save ws_preferences.php from your_site_root_directory
+- save ws_config.php for reference
+- cleanup your_site_root_directory 
+- make installation as described above
+- restore ws_preferences.php
+- restore your data with the help of the admin page of your site
+
+6/ NOTES
+--------
+For import/export site data (download/upload) you'll probably have to increase
+some php configuration settings to be comfortable, see .htaccess for example.
+According to your hosting (dedicated, shared etc.) it will be possible or not;
+the best way on a dedicated is to set them in php.ini, you could also uncomment the
+corresponding lines in .htaccess file, make a .user.ini file, or use any other
+method available.
+
+7/ CREDITS
+----------
+- TinyMCE for rich text editor
+- PHPMailer for email sending
+- jsScrollbar from Nathan Faubion
+- SimplePie for RSS reader

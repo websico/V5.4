@@ -1,0 +1,10 @@
+/*
+ *  Homogene avec le style maintenanceTable de basic.css
+ */
+body {
+	background-color: #fff;
+ 	color: #444;
+}
+legend {
+	font-weight: bold;
+}
